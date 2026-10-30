@@ -1,0 +1,49 @@
+version: '3.8'
+
+services:
+  api-gateway:
+    build: ./api-gateway
+    ports:
+      - "8000:8000"
+    depends_on:
+      - order-service
+      - user-service
+      - product-service
+    networks:
+      - microservices-network
+
+  order-service:
+    build: ./order-service
+    ports:
+      - "8001:8000"
+    volumes:
+      - order-data:/app/data
+    networks:
+      - microservices-network
+
+  user-service:
+    build: ./user-service
+    ports:
+      - "8002:8000"
+    volumes:
+      - user-data:/app/data
+    networks:
+      - microservices-network
+
+  product-service:
+    build: ./product-service
+    ports:
+      - "8003:8000"
+    volumes:
+      - product-data:/app/data
+    networks:
+      - microservices-network
+
+volumes:
+  order-data:
+  user-data:
+  product-data:
+
+networks:
+  microservices-network:
+    driver: bridge

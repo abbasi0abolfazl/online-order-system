@@ -1,0 +1,22 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+*.db
+*.sqlite
+*.sqlite3
+
+# Backups
+src_backup/
+*.bak
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Environment variables
+.env
